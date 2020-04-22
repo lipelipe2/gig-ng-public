@@ -1,1 +1,116 @@
-<p>payments works!</p>
+<div class="container">
+  <div class="row mt-3">
+    <div
+      class="col-sm-12 text-center"
+      style="text-align: center; font-weight: bold;"
+    >
+      <fa-icon
+        [icon]="faCircle"
+        size="xs"
+        style="color: rgb(255, 0, 0); font-size: 15px; width: fit-content;"
+      ></fa-icon>
+      Live
+    </div>
+    <div class="col-sm-12 mt-2">
+      <div
+        class="container"
+        style="
+          text-align: center;
+          border: 3px solid #000000;
+          border-radius: 10px;
+          width: fit-content;
+        "
+      >
+        Your Code: <b>{{ code }}</b>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+      <p style="font-size: 13px; color: rgb(147, 148, 150);">PAYMENT</p>
+      <input
+        class="form-control"
+        aria-label="Small"
+        placeholder="Payment"
+        aria-describedby="inputGroup-sizing-sm"
+        style="border-color: rgb(147, 148, 150);"
+        [(ngModel)]="newRow.name"
+        required
+      />
+    </div>
+    <div class="col-sm-2">
+      <p style="font-size: 13px; color: rgb(147, 148, 150);">AMMOUNT</p>
+      <input
+        [(ngModel)]="newRow.ammount"
+        type="number"
+        class="form-control"
+        aria-label="Small"
+        placeholder="Ammount"
+        aria-describedby="inputGroup-sizing-sm"
+        style="border-color: rgb(147, 148, 150);"
+        required
+      />
+    </div>
+    <div class="col-sm-2">
+      <button
+        type="button"
+        class="btn btn-primary"
+        style="
+          margin-top: 35px;
+          background-color: rgb(147, 148, 150);
+          border-color: rgb(147, 148, 150);"
+          [disabled] = "isDisabled || newRow.name == '' || newRow.ammount == ''"
+        (click)="addRow()"
+      >
+        + ADD
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 mt-5">
+      <p style="font-size: 13px; color: rgb(147, 148, 150);">PAYMENT LIST</p>
+    </div>
+    <div class="col-sm-12">
+      <table class="table mt-2">
+        <thead class="thead">
+          <tr>
+            <th style="width: 40%;">Name</th>
+            <th style="width: 20%;">Ammount</th>
+            <th style="width: 20%;">Code</th>
+            <th style="width: 20%;">Grid</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let i of rows">
+            <td>
+              {{ i.name }}
+            </td>
+            <td>
+              {{ i.ammount }}
+            </td>
+            <td>
+              {{ i.code }}
+            </td>
+            <td>
+              {{ i.grid }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-12 text-center mt-4">
+      <button
+        type="button"
+        class="btn btn-primary"
+        style="
+          background-color: rgb(147, 148, 150);
+          border-color: rgb(147, 148, 150);
+        "
+        [routerLink]="['/generator']"
+        routerLinkActive="router-link-active"
+      >
+        GENERATOR
+      </button>
+    </div>
+  </div>
+</div>

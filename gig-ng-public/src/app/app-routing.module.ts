@@ -3,16 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { GeneratorComponent } from './generator/generator.component';
 import { PaymentsComponent } from './payments/payments.component';
 
-
 const routes: Routes = [
   { path: 'generator', component: GeneratorComponent },
-  { path: 'payments', component:PaymentsComponent },
-  { path: '',   redirectTo: 'payments', pathMatch: 'full' },
+  { path: 'payments', component: PaymentsComponent },
+  { path: '', redirectTo: 'payments', pathMatch: 'full' },
   { path: '**', component: PaymentsComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

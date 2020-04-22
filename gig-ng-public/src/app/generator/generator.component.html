@@ -1,1 +1,100 @@
-<p>generator works!</p>
+<div class="container p-3 mt-5">
+  <div class="row">
+    <div class="col-sm-5">
+      <p style="font-size: 13px; color: rgb(147, 148, 150);">CHARACTER</p>
+      <input
+        #inputChar
+        type="text"
+        class="form-control"
+        aria-label="Small"
+        placeholder="Character"
+        maxlength="1"
+        (keydown)="isChar($event)"
+        pattern="[a-z]{1}"
+        [value] = "char"
+        aria-describedby="inputGroup-sizing-sm"
+        style="width: 30%; border-color: rgb(147, 148, 150)"
+      />
+    </div>
+    <div
+      class="col-sm-2"
+      style="display: inline-block; vertical-align: middle;"
+    >
+      <fa-icon
+        [icon]="faClock"
+        size="4x"
+        style="color: rgb(147, 148, 150);"
+      ></fa-icon>
+    </div>
+    <div class="col-sm-5 mt-4">
+      <button
+        type="button"
+        class="btn btn-primary"
+        style="
+          background-color: rgb(147, 148, 150);
+          border-color: rgb(147, 148, 150);
+          float: right;
+        "
+        (click)="generateChar()"
+        [disabled]="disabled"
+      >
+        GENERATE 2D GRID
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <table class="table table-bordered mt-5" >
+        <thead>
+          <tr>
+            <th></th>
+            <th *ngFor="let col of cols" scope="col">{{ col }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let i of cols">
+            <th>{{ i }}</th>
+            <td *ngFor="let j of cols">{{ matrix[i][j] }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-sm-12" style="text-align: center; font-weight: bold;">
+      <fa-icon
+        [icon]="faCircle"
+        size="xs"
+        style="color: rgb(255, 0, 0);"
+      ></fa-icon>
+      Live
+    </div>
+    <div class="col-sm-12 mt-2">
+      <div
+        class="container"
+        style="
+          text-align: center;
+          border: 3px solid #000000;
+          border-radius: 10px;
+          width: fit-content;
+        "
+      >
+        Your Code: <b>{{ code }}</b>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 text-center mt-4">
+    <button
+      type="button"
+      class="btn btn-primary"
+      style="
+        background-color: rgb(147, 148, 150);
+        border-color: rgb(147, 148, 150);
+      "
+      [routerLink]="['/payments']"
+      routerLinkActive="router-link-active"
+    >
+      PAYMENTS
+    </button>
+  </div>
+</div>
